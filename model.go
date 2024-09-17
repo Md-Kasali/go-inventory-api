@@ -67,6 +67,10 @@ func (p *product) updateProduct(db *sql.DB) error {
 
 func (p *product) deleteProduct(db *sql.DB) error {
 	query := fmt.Sprintf("DELETE FROM products WHERE id=%v", p.ID)
-	_, err := db.Exec(query)
-	return err
+	rows, _ := db.Exec(query)
+	rowsAffected, _ := rows.RowsAffected()
+	if rowsAffected == 0 {
+		return errors.New("no record found")
+	}
+	return nil
 }
