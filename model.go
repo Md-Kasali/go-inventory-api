@@ -60,7 +60,7 @@ func (p *product) updateProduct(db *sql.DB) error {
 	rows, _ := db.Exec(query)
 	rowsAffected, _ := rows.RowsAffected()
 	if rowsAffected == 0 {
-		return errors.New("no such row exists")
+		return errors.New("product not found")
 	}
 	return nil
 }

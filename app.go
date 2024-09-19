@@ -112,7 +112,7 @@ func (app *App) updateProduct(w http.ResponseWriter, r *http.Request) {
 
 	err = p.updateProduct(app.Db)
 	if err != nil {
-		sendError(w, http.StatusInternalServerError, err.Error())
+		sendError(w, http.StatusNotFound, err.Error())
 		return
 	}
 
