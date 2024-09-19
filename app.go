@@ -124,7 +124,7 @@ func (app *App) deleteProduct(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key, err := strconv.Atoi(vars["id"])
 	if err != nil {
-		sendError(w, http.StatusNotFound, "Invalid product ID")
+		sendError(w, http.StatusBadRequest, "Invalid product ID")
 		return
 	}
 
@@ -133,7 +133,7 @@ func (app *App) deleteProduct(w http.ResponseWriter, r *http.Request) {
 
 	err = p.deleteProduct(app.Db)
 	if err != nil {
-		sendError(w, http.StatusInternalServerError, err.Error())
+		sendError(w, http.StatusNotFound, err.Error())
 		return
 	}
 

@@ -70,7 +70,7 @@ func (p *product) deleteProduct(db *sql.DB) error {
 	rows, _ := db.Exec(query)
 	rowsAffected, _ := rows.RowsAffected()
 	if rowsAffected == 0 {
-		return errors.New("no record found")
+		return errors.New("product not found")
 	}
 	return nil
 }
