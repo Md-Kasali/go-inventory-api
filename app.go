@@ -98,7 +98,7 @@ func (app *App) updateProduct(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key, err := strconv.Atoi(vars["id"])
 	if err != nil {
-		sendError(w, http.StatusNotFound, "Invalid product ID")
+		sendError(w, http.StatusBadRequest, "Invalid product ID")
 		return
 	}
 
